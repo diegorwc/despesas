@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 public class Despesa {
@@ -20,7 +21,6 @@ public class Despesa {
         this.valor = valor;
         this.dataPagamento = dataPagamento;
     }
-
     public BigDecimal getValor() {
         return valor;
     }
@@ -46,6 +46,19 @@ public class Despesa {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Despesa despesa = (Despesa) o;
+        return Objects.equals(id, despesa.id) && Objects.equals(nome, despesa.nome) && Objects.equals(valor, despesa.valor) && Objects.equals(dataPagamento, despesa.dataPagamento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, valor, dataPagamento);
+    }
+
+    @Override
     public String toString() {
         return "Despesa{" +
                 "id=" + id +
@@ -54,4 +67,6 @@ public class Despesa {
                 ", dataPagamento=" + dataPagamento +
                 '}';
     }
+
+
 }
