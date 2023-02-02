@@ -42,5 +42,26 @@ public class DespesaController {
         return repository.findById(id)
                 .orElseThrow(() -> new DespesaNotFoundException(id));
     }
+    @PutMapping("/despesas/{id}")
+    Despesa edita(@RequestBody Despesa editaDespesa, @PathVariable Long id) {
+        return repository.findById(id)
+                .map(despesa -> {
+                    if(editaDespesa.getNome() != null) {
+                        despesa.setNome(editaDespesa.getNome());
+                    }
+                    if(editaDespesa.getValor() != null) {
+                        despesa.setValor(editaDespesa.getValor());
+                    }
+                    if(editaDespesa.getDataPagamento() != null) {
+                        System.out.println(editaDespesa.getDataPagamento());
+                        despesa.setDataPagamento(editaDespesa.getDataPagamento());
+                    }
+                    return repository.save(despesa);
+                })
+                .orElseGet(() -> {
+                   editaDespesa.setId(id);
+                   return repository.save(editaDespesa);
+                });
+    }
 
 }

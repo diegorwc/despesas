@@ -45,6 +45,14 @@ public class Despesa {
         this.id = id;
     }
 
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public void setDataPagamento(LocalDate dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
