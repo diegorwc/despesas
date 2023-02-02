@@ -1,8 +1,10 @@
 package api.despesas.controllers;
 
+import api.despesas.exceptions.DespesaNotFoundException;
 import api.despesas.models.Despesa;
 import api.despesas.models.Greeting;
 import api.despesas.repositories.DespesaRepository;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +35,12 @@ public class DespesaController {
     @PostMapping("/novaDespesa")
     Despesa novaDespesa(@RequestBody Despesa novaDespesa) {
         return repository.save(novaDespesa);
+    }
+
+    @GetMapping("/despesa/{id}")
+    Despesa despesa(@PathVariable Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new DespesaNotFoundException(id));
     }
 
 }
