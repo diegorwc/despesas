@@ -17,6 +17,8 @@ public class ViewController {
         this.repository = repository;
     }
 
+
+
     @GetMapping("/despesa_view/{id}")
     public String despesa_view(@PathVariable Long id, Model model) {
 
@@ -27,6 +29,6 @@ public class ViewController {
         model.addAttribute("valor", despesa.getValor());
         model.addAttribute("dataPagamento", despesa.getDataPagamento());
 
-        return "home";
+        return "despesa_view";
     }
 }
