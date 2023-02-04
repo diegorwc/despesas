@@ -5,9 +5,12 @@ import api.despesas.models.Despesa;
 import api.despesas.models.Greeting;
 import api.despesas.repositories.DespesaRepository;
 import org.hibernate.ObjectNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -42,7 +45,7 @@ public class DespesaController {
         return repository.findById(id)
                 .orElseThrow(() -> new DespesaNotFoundException(id));
     }
-    @PutMapping("/despesas/{id}")
+    @PutMapping("/despesa/{id}")
     Despesa edita(@RequestBody Despesa editaDespesa, @PathVariable Long id) {
         return repository.findById(id)
                 .map(despesa -> {
@@ -62,6 +65,20 @@ public class DespesaController {
                    editaDespesa.setId(id);
                    return repository.save(editaDespesa);
                 });
+    }
+
+//    @DeleteMapping("/despesa/{id}")
+//    void deletaDespesa(@PathVariable Long id) {
+//        repository.deleteById(id);
+//    }
+    @DeleteMapping("/despesa/{id}")
+    public ResponseEntity<Map<String, String>> deletaDespesa(@PathVariable Long id) {
+        repository.deleteById(id);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Recurso deletado com sucesso");
+
+        return ResponseEntity.ok(response);
     }
 
 }
