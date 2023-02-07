@@ -1,5 +1,6 @@
 package api.despesas.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -10,9 +11,13 @@ import java.util.Objects;
 
 @Entity
 public class Despesa {
+    @JsonProperty("id")
     private @Id @GeneratedValue Long id;
+    @JsonProperty("nome")
     private String nome;
+    @JsonProperty("valor")
     private BigDecimal valor;
+    @JsonProperty("dataPagamento")
     private LocalDate dataPagamento;
 
     public Despesa() {}
@@ -75,6 +80,5 @@ public class Despesa {
                 ", dataPagamento=" + dataPagamento +
                 '}';
     }
-
 
 }

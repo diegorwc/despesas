@@ -14,7 +14,6 @@
     <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
 </head>
 <body>
-
 <div class="table_container">
     <table class="table">
         <thead>
@@ -24,17 +23,12 @@
             <th>Data de Pagamento</th>
         </tr>
         </thead>
-        <tr>
-            <td th:text="${nome}"></td>
-            <td th:text="'R$ ' + ${valor}"></td>
-            <td th:text="${dataPagamento}"></td>
+        <tr th:each="despesa : ${despesas}">
+            <td th:text="${despesa.nome}"></td>
+            <td th:text="'R$ ' + ${despesa.valor}"></td>
+            <td th:text="${#temporals.format(despesa.dataPagamento, 'dd/MM/yyyy')}"></td>
         </tr>
     </table>
 </div>
-
-<p th:text="${despesas}"></p>
-<!--<p th:text="'Despesa: ' + ${nome}" />-->
-<!--<p th:text="'Valor: ' + ${valor}" />-->
-<!--<p th:text="'Data de pagamento: ' + ${dataPagamento}" />-->
 </body>
 </html>
