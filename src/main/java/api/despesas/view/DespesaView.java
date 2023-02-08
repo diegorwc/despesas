@@ -58,4 +58,8 @@ public class DespesaView {
         String dataFormatada = date.format(formatter);
         return dataFormatada;
     }
+    @GetMapping("/cadastra_despesa")
+    public String cadastraDespesa(Model model) {
+        return "cadastrar_despesa";
+    }
 }

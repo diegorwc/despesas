@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="base :: head"></div>
+</head>
+<body>
+<div th:replace="base :: nav"></div>
+<form class="cadastro_form" th:fragment="form">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Despesa | ex: Cartão de Crédito">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Valor">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Data de pagamento">
+        </div>
+        <div class="col">
+            <button class="form-control button-form">Cadastrar</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
