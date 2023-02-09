@@ -21,5 +21,9 @@ public class DespesaService {
         ResponseEntity<Despesa[]> response = restTemplate.getForEntity(API_URL + "/despesas", Despesa[].class);
         return Arrays.asList(response.getBody());
     }
+
+    public void cadastraDespesa() {
+
+    }
 }
 

@@ -7,21 +7,22 @@
 <body>
     <div th:replace="base :: nav"></div>
     <div th:replace="cadastrar_despesa :: form"></div>
-<div class="table_container">
-    <table class="table">
-        <thead>
-        <tr class="table-primary">
-            <th>Despesa</th>
-            <th>Valor</th>
-            <th>Data de Pagamento</th>
-        </tr>
-        </thead>
-        <tr th:each="despesa : ${despesas}">
-            <td th:text="${despesa.nome}"></td>
-            <td th:text="'R$ ' + ${despesa.valor}"></td>
-            <td th:text="${#temporals.format(despesa.dataPagamento, 'dd/MM/yyyy')}"></td>
-        </tr>
-    </table>
-</div>
+    <div class="table_container">
+        <table class="table">
+            <thead>
+            <tr class="table-primary">
+                <th>Despesa</th>
+                <th>Valor</th>
+                <th>Data de Pagamento</th>
+            </tr>
+            </thead>
+            <tr th:each="despesa : ${despesas}">
+                <td th:text="${despesa.nome}"></td>
+                <td th:text="'R$ ' + ${despesa.valor}"></td>
+                <td th:text="${#temporals.format(despesa.dataPagamento, 'dd/MM/yyyy')}"></td>
+            </tr>
+        </table>
+    </div>
+<script th:replace="cadastrar_despesa :: form-script"></script>
 </body>
 </html>

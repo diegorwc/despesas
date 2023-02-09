@@ -3,24 +3,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="base :: head"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div th:replace="base :: nav"></div>
-<form class="cadastro_form" th:fragment="form">
+<form class="cadastro_form" th:fragment="form" id="cadastroForm" method="POST">
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Despesa | ex: Cartão de Crédito">
+            <input type="text" class="form-control" name="nome" placeholder="Despesa | ex: Cartão de Crédito">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Valor">
+                <input type="text" class="form-control input-valor" name="valor" value="R$ " id="valor" placeholder="Valor">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Data de pagamento">
+            <input type="date" class="form-control" name="dataPagamento" placeholder="Data de pagamento">
         </div>
         <div class="col">
-            <button class="form-control button-form">Cadastrar</button>
+            <button class="form-control button-form" id="submitButton">Cadastrar</button>
         </div>
     </div>
 </form>
+<script th:fragment="form-script">
+    document.getElementById("submitButton").addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var form = document.getElementById("cadastroForm");
+  var nome = form.elements.nome.value;
+  var valor = form.elements.valor.value.replace('R$ ', '');
+  var dataPagamento = form.elements.dataPagamento.value;
+
+  fetch('http://localhost:8080/novaDespesa', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      nome: nome,
+      valor: valor,
+      dataPagamento: dataPagamento
+    })
+  })
+  .then(response => response.json())
+  .then(
+    data =>  {
+        console.log(data);
+        window.location.replace("http://localhost:8080/todas_despesas");
+    }
+  )
+  .catch(error => console.error(error));
+});
+</script>
+</script>
 </body>
 </html>
