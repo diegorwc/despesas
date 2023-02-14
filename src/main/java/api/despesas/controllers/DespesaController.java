@@ -59,10 +59,6 @@ public class DespesaController {
                 });
     }
 
-//    @DeleteMapping("/despesa/{id}")
-//    void deletaDespesa(@PathVariable Long id) {
-//        repository.deleteById(id);
-//    }
     @DeleteMapping("/despesa/{id}")
     public ResponseEntity<Map<String, String>> deletaDespesa(@PathVariable Long id) {
         repository.deleteById(id);

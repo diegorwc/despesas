@@ -19,8 +19,8 @@ public class LoadDB {
     @Bean
     CommandLineRunner initDatabase (DespesaRepository despesaRepository) {
         return args -> {
-            log.info("Add registro" + despesaRepository.save(new Despesa("Aluguel", new BigDecimal(1000), LocalDate.of(2023, 01, 31))));
-            log.info("Add registro" + despesaRepository.save(new Despesa("Internet", new BigDecimal(99.90), LocalDate.of(2023, 01, 31))));
+//            log.info("Add registro" + despesaRepository.save(new Despesa("Aluguel", new BigDecimal(1000), LocalDate.of(2023, 01, 31))));
+//            log.info("Add registro" + despesaRepository.save(new Despesa("Internet", new BigDecimal(99.90), LocalDate.of(2023, 01, 31))));
         };
     }
 }
