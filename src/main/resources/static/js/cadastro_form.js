@@ -1,10 +1,10 @@
  document.getElementById("submitButton").addEventListener("click", function(event) {
   event.preventDefault();
 
-  var form = document.getElementById("cadastroForm");
-  var nome = form.elements.nome.value;
-  var valor = form.elements.valor.value.replace('R$ ', '');
-  var dataPagamento = form.elements.dataPagamento.value;
+  let form = document.getElementById("cadastroForm");
+  let nome = form.elements.nome.value;
+  let valor = form.elements.valor.value.replace('R$ ', '');
+  let dataPagamento = form.elements.dataPagamento.value;
 
   fetch('http://localhost:8080/novaDespesa', {
     method: 'POST',

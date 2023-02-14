@@ -10,16 +10,16 @@
 <form class="cadastro_form" th:fragment="form" id="cadastroForm">
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" name="nome" placeholder="Despesa | ex: Cartão de Crédito">
+            <input type="text" id="nome" class="form-control" name="nome" placeholder="Despesa | ex: Cartão de Crédito">
         </div>
         <div class="col">
-                <input type="text" class="form-control input-valor" name="valor" value="R$ " id="valor" placeholder="Valor">
+                <input type="text" itemid="valor" class="form-control input-valor" name="valor" value="R$ " id="valor" placeholder="Valor">
         </div>
         <div class="col">
-            <input type="date" class="form-control" name="dataPagamento" placeholder="Data de pagamento">
+            <input type="date" id="dataPagamento" class="form-control" name="dataPagamento" placeholder="Data de pagamento">
         </div>
         <div class="col">
-            <button class="form-control button-form" id="submitButton">Cadastrar</button>
+            <button class="form-control button-form" id="submitButton">Salvar</button>
         </div>
     </div>
 </form>

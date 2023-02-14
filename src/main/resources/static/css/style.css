@@ -17,3 +17,11 @@
 .button-form {
     width: 30%;
 }
+
+div.modal-body form#cadastroForm.cadastro_form div.row div.col button#submitButton.form-control.button-form {
+    width: 100%;
+}
+
+#modalId {
+    display: inline;
+}

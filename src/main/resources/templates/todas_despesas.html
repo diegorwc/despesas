@@ -21,12 +21,47 @@
                 <td th:text="${despesa.nome}"></td>
                 <td th:text="'R$ ' + ${despesa.valor}"></td>
                 <td th:text="${#temporals.format(despesa.dataPagamento, 'dd/MM/yyyy')}"></td>
-                <td><button class="btn btn-warning">Editar</button></td>
+                <td><button class="btn btn-warning" data-toggle="modal" data-target="#EditarModal" th:onclick="editaModal([[${despesa}]])">Editar</button></td>
+<!--                <td><button class="btn btn-warning" th:onclick="editaObj([[${despesa}]])">Editar</button></td>-->
                 <td><button class="btn btn-danger" th:id="${despesa.id}" th:onclick="deleta([[${despesa.id}]])">Deletar</button></td>
             </tr>
         </table>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="EditarModal" tabindex="-1" role="dialog" aria-labelledby="EditarDespesa" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="EditarDespesa">Editar Despesa - ID: <div id="modalId"></div></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="edita_form" th:fragment="form" id="edita_form">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" id="nomeModal" class="form-control" name="nomeModal" placeholder="Despesa | ex: Cartão de Crédito">
+                            </div>
+                            <div class="col">
+                                <input type="text" itemid="valorModal" class="form-control input-valor" name="valorModal" value="R$ " id="valorModal" placeholder="Valor">
+                            </div>
+                            <div class="col">
+                                <input type="date" id="dataPagamentoModal" class="form-control" name="dataPagamentoModal" placeholder="Data de pagamento">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" th:onclick="salvaEdicao()">Salvar mudanças</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <script th:replace="cadastrar_despesa :: form-script"></script>
 <script th:src="@{/js/deleta_despesa.js}"></script>
+<script th:src="@{/js/edita_form.js}"></script>
 </body>
 </html>
