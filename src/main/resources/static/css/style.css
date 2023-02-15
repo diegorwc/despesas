@@ -22,6 +22,6 @@ div.modal-body form#cadastroForm.cadastro_form div.row div.col button#submitButt
     width: 100%;
 }
 
-#modalId {
+#modalId, #deletarModalId {
     display: inline;
 }

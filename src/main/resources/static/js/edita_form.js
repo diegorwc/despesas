@@ -1,4 +1,4 @@
-function editaModal(despesa) {
+function editarModal(despesa) {
 //    document.getElementById("nome").focus();
     document.getElementById("modalId").innerHTML = despesa.id;
     document.getElementById("nomeModal").value = despesa.nome;
@@ -32,7 +32,7 @@ function salvaEdicao() {
       .then(
         data =>  {
             console.log(data);
-            window.location.replace("http://localhost:8080/todas_despesas");
+            window.location.replace("http://localhost:8080");
         }
       )
       .catch(error => console.error(error));

@@ -1,4 +1,5 @@
-function deleta(id) {
+function deleta() {
+    let id = document.getElementById("deletarModalId").innerHTML;
     console.log(id);
     fetch('http://localhost:8080/despesa/' + id, {
         method: 'DELETE',
@@ -10,8 +11,17 @@ function deleta(id) {
       .then(
         data =>  {
             console.log(data);
-            window.location.replace("http://localhost:8080/todas_despesas");
+            window.location.replace("http://localhost:8080");
         }
       )
       .catch(error => console.error(error));
+}
+
+function deletarModal(despesa) {
+//    document.getElementById("nome").focus();
+    document.getElementById("deletarModalId").innerHTML = despesa.id;
+    document.getElementById("nomeDeletarModal").value = despesa.nome;
+    document.getElementById("valorDeletarModal").value = 'R$ ' + despesa.valor;
+    document.getElementById("dataPagamentoDeletarModal").value = despesa.dataPagamento;
+    console.log(despesa);
 }

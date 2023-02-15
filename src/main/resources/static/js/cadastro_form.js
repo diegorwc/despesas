@@ -21,7 +21,7 @@
   .then(
     data =>  {
         console.log(data);
-        window.location.replace("http://localhost:8080/todas_despesas");
+        window.location.replace("http://localhost:8080/");
     }
   )
   .catch(error => console.error(error));

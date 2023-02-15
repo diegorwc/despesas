@@ -44,7 +44,8 @@ public class DespesaView {
         return "despesa_view";
     }
 
-    @GetMapping("/todas_despesas")
+    @GetMapping("/")
+//    @GetMapping("/todas_despesas")
     public String getDespesas(Model model) {
         List<Despesa> despesas = despesaService.getDespesas();
 
