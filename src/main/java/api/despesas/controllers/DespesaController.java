@@ -3,9 +3,13 @@ package api.despesas.controllers;
 import api.despesas.exceptions.DespesaNotFoundException;
 import api.despesas.models.Despesa;
 import api.despesas.repositories.DespesaRepository;
+import api.despesas.services.DespesaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +20,12 @@ public class DespesaController {
 
     private final AtomicLong counter = new AtomicLong();
     private final DespesaRepository repository;
+    private final DespesaService service;
 
-    public DespesaController(DespesaRepository repository) {
+    public DespesaController(DespesaRepository repository, DespesaService service) {
+
         this.repository = repository;
+        this.service = service;
     }
 
     @GetMapping("/despesas")
@@ -67,6 +74,14 @@ public class DespesaController {
         response.put("message", "Recurso deletado com sucesso");
 
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/upload")
+    public ModelAndView upload(@RequestParam("file") MultipartFile file) throws IOException {
+        service.readFile(file.getResource());
+        ModelAndView modelAndView = new ModelAndView("upload");
+        modelAndView.addObject("filename", file.getOriginalFilename());
+        return modelAndView;
     }
 
 }

@@ -45,10 +45,8 @@ public class DespesaView {
     }
 
     @GetMapping("/")
-//    @GetMapping("/todas_despesas")
     public String getDespesas(Model model) {
         List<Despesa> despesas = despesaService.getDespesas();
-
 
         model.addAttribute("despesas", despesas);
         return "todas_despesas";
@@ -63,4 +61,8 @@ public class DespesaView {
     public String cadastraDespesa(Model model) {
         return "cadastrar_despesa";
     }
+
+    @GetMapping("/upload_file")
+    public String uploadCsv(Model model) { return "upload"; }
+
 }
