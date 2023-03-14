@@ -17,7 +17,7 @@ function salvaEdicao() {
     console.log("----- DADOS DO editaForm ----");
     console.log(id, nome, valor, dataPagamento);
 
-    fetch('http://localhost:8080/despesa/' + id, {
+    fetch('http://localhost:8081/despesa/' + id, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ function salvaEdicao() {
       .then(
         data =>  {
             console.log(data);
-            window.location.replace("http://localhost:8080");
+            window.location.replace("http://localhost:8081");
         }
       )
       .catch(error => console.error(error));

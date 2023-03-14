@@ -6,7 +6,7 @@
   let valor = form.elements.valor.value.replace('R$ ', '');
   let dataPagamento = form.elements.dataPagamento.value;
 
-  fetch('http://localhost:8080/novaDespesa', {
+  fetch('http://localhost:8081/novaDespesa', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -21,7 +21,7 @@
   .then(
     data =>  {
         console.log(data);
-        window.location.replace("http://localhost:8080/");
+        window.location.replace("http://localhost:8081/");
     }
   )
   .catch(error => console.error(error));

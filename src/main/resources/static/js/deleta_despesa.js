@@ -1,7 +1,7 @@
 function deleta() {
     let id = document.getElementById("deletarModalId").innerHTML;
     console.log(id);
-    fetch('http://localhost:8080/despesa/' + id, {
+    fetch('http://localhost:8081/despesa/' + id, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -11,7 +11,7 @@ function deleta() {
       .then(
         data =>  {
             console.log(data);
-            window.location.replace("http://localhost:8080");
+            window.location.replace("http://localhost:8081");
         }
       )
       .catch(error => console.error(error));

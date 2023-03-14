@@ -21,7 +21,7 @@ import java.util.Scanner;
 @Service
 public class DespesaService {
 
-    private static final String API_URL = "http://localhost:8080";
+    private static final String API_URL = "http://localhost:8081";
     private final DespesaRepository repository;
     @Autowired
     private RestTemplate restTemplate;
