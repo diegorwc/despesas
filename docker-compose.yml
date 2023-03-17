@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+    db:
+      image: postgres:alpine3.17
+      environment:
+        POSTGRES_DB: "despesas"
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: 123456
+      restart: always
+#    pgadmin:
+#      container_name: pgadmin
+#      image: dpage/pgadmin4:latest
+#      environment:
+#        PGADMIN_DEFAULT_EMAIL: "email@email.com"
+#        PGADMIN_DEFAULT_PASSWORD: "123456"
+#      ports:
+#        - "5050:80"
+#      restart: always
+    web:
+      build: .
+      ports:
+        - "8081:8081"
